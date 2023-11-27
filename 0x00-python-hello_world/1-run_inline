@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "$PYCODE" > "main1.py" &&  python3 "main1.py"
