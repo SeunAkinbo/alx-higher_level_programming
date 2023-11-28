@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-for char in alphabet:
+for char in "abcdefghijklmnopqrstuvwxyz":
     print(f"{char}", end="")
 
