@@ -1,1 +1,2 @@
-#!/usr/bin/python3\nprint(f"Best School: {88+10}")
+#!/usr/bin/python3
+print(f"Best School: {88+10}")
