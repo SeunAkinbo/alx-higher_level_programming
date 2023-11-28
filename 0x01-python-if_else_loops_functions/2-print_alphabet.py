@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import string
 alphabet = string.ascii_lowercase
-print(f"{alphabet}", end="")
+for char in alphabet:
+    print(f"{char}", end="")
 
