@@ -1,9 +1,10 @@
 #  Topic: PYTHON IF ELSE LOOPS & FUNCTIONS
+
 ## Author: OLUWASEUN AKINBO
+
 ## Date:   28th November 2023
 
-,,,
-
+```
 Python
 
 def if_else():
@@ -12,4 +13,4 @@ def if_else():
 	else:
 		print("Entry Denied")
 
-'''
+```
