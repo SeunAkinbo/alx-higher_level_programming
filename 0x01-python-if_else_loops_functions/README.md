@@ -1,8 +1,9 @@
-## Topic: PYTHON IF ELSE LOOPS & FUNCTIONS
-# Author: OLUWASEUN AKINBO
-# Date:   28th November 2023
+#  Topic: PYTHON IF ELSE LOOPS & FUNCTIONS
+## Author: OLUWASEUN AKINBO
+## Date:   28th November 2023
 
 ,,,
+
 Python
 
 def if_else():
