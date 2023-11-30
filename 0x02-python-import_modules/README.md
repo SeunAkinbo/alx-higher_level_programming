@@ -1,6 +1,6 @@
-#  Topic: Python Import Module
-## Date:  30th November 2023
-## Author:Oluwaseun Akinbo
+#  Topic:  Python Import Module
+## Date:   30th November 2023
+## Author: Oluwaseun Akinbo
 
 
 ```
