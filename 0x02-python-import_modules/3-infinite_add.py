@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 
-import sys
-
 if __name__ == "__main__":
-    args = sys.argv
+    from sys import argv
+    args = argv
     length = len(args)
     total = 0
     index = 1
@@ -14,4 +13,5 @@ if __name__ == "__main__":
         while index <  length:
             total += int(args[index])
             index += 1
+        
         print("{}".format(total))
