@@ -8,9 +8,9 @@ if __name__ == "__main__":
     index = 1
 
     if length == 1:
-        print(total)
+        print("{}".format(total))
     else:
         while index <  length:
             total += int(args[index])
             index += 1
-        print(total)
+        print("{}".format(total))
