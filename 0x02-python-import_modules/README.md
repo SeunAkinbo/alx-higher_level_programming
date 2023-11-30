@@ -6,9 +6,10 @@
 ```
 Python
 
-import string
+from string import ascii_uppercase
 
-def myAlphabets():
-	letters = string.ascii_uppercase
-	print(letters)
+if __name__ == "__main__":
+	def myAlphabets():
+		letters = string.ascii_uppercase
+		print(letters)
 ```
