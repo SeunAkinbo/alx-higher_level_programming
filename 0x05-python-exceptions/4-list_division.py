@@ -5,7 +5,7 @@ def list_division(my_list_1, my_list_2, list_length):
 
     for count in range(list_length):
         result = 0
-    
+
         try:
             num1 = my_list_1[count] if count < list_length else 0
             num2 = my_list_2[count] if count < list_length else 0
