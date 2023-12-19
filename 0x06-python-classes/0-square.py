@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-
+# 0-square.py by Oluwaseun Akinbo
 
 class Square:
-    pass
+    def __init__(self):
+        pass
