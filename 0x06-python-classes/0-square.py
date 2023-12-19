@@ -3,6 +3,7 @@
 
 """0-square.py"""
 
+
 class Square:
     """Defines a class Square """
     def __init__(self):
