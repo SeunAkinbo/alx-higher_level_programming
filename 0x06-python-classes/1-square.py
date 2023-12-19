@@ -4,12 +4,14 @@
 """A class Square File"""
 
 
+
 class Square:
     """Defines a class Square"""
-    def __init__(self, _size):
-        """Initializing the class object with attribute
-            __init__
+    def __init__(self, __size):
+        """__init__ Initializing the class object with attribute.
+
+            Args:
             _size: A private instance attribute
         """
 
-        self._size = _size
+        self.__size = __size
