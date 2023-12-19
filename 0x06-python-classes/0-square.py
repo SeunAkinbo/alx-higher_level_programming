@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # 0-square.py by Oluwaseun Akinbo
 
-"""0-square.py"""
+"""A class Square File"""
 
 
 class Square:
