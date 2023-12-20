@@ -14,7 +14,19 @@ class Square:
         self.__position = position
 
     def __str__(self):
-        self.my_print()
+        """
+        Class instance
+        """
+        square_str = ""
+        if self.__size == 0:
+            return square_str + "\n"
+        for _ in range(self.__position[1]):
+            square_str += "\n"
+        for i in range(self.__size):
+            square_str += (" " * self.__position[0] + "#" * self.__size)
+            if (i < self.__size - 1):
+                square_str += "\n"
+        return square_str
 
     @property
     def size(self):
