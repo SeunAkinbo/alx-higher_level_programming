@@ -18,16 +18,14 @@ class Square:
 
     @property
     def size(self):
-        """
-        Property getter that allows accessing
+        """Property getter that allows accessing
         __size attribute indirectly
         """
         return self.__size
 
     @size.setter
     def size(self, value):
-        """
-        Property setter that allows modifying
+        """Property setter that allows modifying
         __size attribute indirectly
         """
         if not isinstance(value, int):
@@ -38,16 +36,14 @@ class Square:
 
     @property
     def position(self):
-        """
-        Property getter that allows accessing
+        """Property getter that allows accessing
         __position attribute indirectly
         """
         return self.__position
 
     @position.setter
     def position(self, value):
-        """
-        Property setter that allows modifying
+        """Property setter that allows modifying
         __position attribute indirectly
         """
         if not isinstance(value, tuple):
