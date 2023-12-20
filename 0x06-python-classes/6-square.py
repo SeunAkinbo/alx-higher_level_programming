@@ -50,7 +50,8 @@ class Square:
         Property setter that allows modifying
         __position attribute indirectly
         """
-        if len(value) != 2:
+        if not isinstance(value, tuple) or len(value) != 2 or \
+                not all(isinstance(i, int) and i >= 0 for i in value):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
