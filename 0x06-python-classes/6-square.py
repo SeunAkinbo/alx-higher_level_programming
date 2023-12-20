@@ -1,83 +1,92 @@
 #!/usr/bin/python3
-"""My square module"""
+"""A class Square File"""
 
 
 class Square:
-    """defines a square"""
-
+    """Defines a class Square"""
     def __init__(self, size=0, position=(0, 0)):
-        """Create a Square
-        Args:
-            size: length of a side of Square
-            position: where the square is (coordinates)
+        """__init__ Initializing the class object with attribute.
+
+            Args:
+            _size: A private instance attribute
         """
-        self.size = size
-        self.position = position
+        self.__size = size
+        self.__position = position
 
     def __str__(self):
         self.my_print()
 
     @property
     def size(self):
-        """"The propery of size as the len of a side of Square
-        Raises:
-            TypeError: if size != int
-            ValueError: if size < 0
+        """
+        Property getter that allows accessing
+        __size attribute indirectly
         """
         return self.__size
 
     @size.setter
     def size(self, value):
+        """
+        Property setter that allows modifying
+        __size attribute indirectly
+        """
         if not isinstance(value, int):
-            raise TypeError('size must be an integer')
+            raise TypeError("size must be an integer")
         if value < 0:
-            raise ValueError('size must be >= 0')
+            raise ValueError("size must be >= 0")
         self.__size = value
 
     @property
     def position(self):
-        """property of the coordinates of this Square
-        Raises:
-            TypeError: if value != a tuple of 2 integers < 0
+        """
+        Property getter that allows accessing
+        __position attribute indirectly
         """
         return self.__position
 
     @position.setter
     def position(self, value):
-        """set the position of this Square
-        Args: value as a tuple of two positive integers
-        Raises:
-            TypeError: if value is not a tuple or any int in tuple < 0
+        """
+        Property setter that allows modifying
+        __position attribute indirectly
         """
         if not isinstance(value, tuple):
-            raise TypeError('position must be a tuple of 2 positive integers')
+            raise TypeError("position must be a tuple of 2 positive integers")
         if len(value) != 2:
-            raise TypeError('position must be a tuple of 2 positive integers')
-        if len([i for i in value if isinstance(i, int) and i >= 0]) != 2:
-            raise TypeError('position must be a tuple of 2 positive integers')
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if not all(isinstance(i, int) and i >= 0 for i in value):
+            raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
     def area(self):
-        """Get the area of a Square
-        Returns: The size squared
-        """
-        return self.__size * self.__size
+        """Computes and return the area of a square"""
+        return self.__size ** 2
 
-    def pos_print(self):
-        """returns the position in spaces"""
-        pos = ""
-        if self.size == 0:
+    def formatted_print(self):
+        """return the position format"""
+        cor = ""
+        if self.__size == 0:
             return "\n"
-        for w in range(self.position[1]):
-            pos += "\n"
-        for w in range(self.size):
-            for i in range(self.position[0]):
-                pos += " "
-            for j in range(self.size):
-                pos += "#"
-            pos += "\n"
-        return pos
+        for _ in range(self.__position[1]):
+            cor += "\n"
+        for _ in range(self.__size):
+            for i in range(self.__position[0]):
+                cor += " "
+            for j in range(self.__size):
+                cor += "#"
+            cor += '\n'
+        return cor
 
     def my_print(self):
-        """print the square in position"""
-        print(self.pos_print(), end='')
+        print(self.formatted_print(), end="")
+    """
+    def my_print(self):
+        '''Prints to the stdout the square with character #'''
+        if self.__size > 0:
+            for i in range(self.__position[1]):
+                print()
+            for i in range(self.__size):
+                print(" " * self.__position[0] + "#" * self.__size)
+        else:
+            print()
+    """
