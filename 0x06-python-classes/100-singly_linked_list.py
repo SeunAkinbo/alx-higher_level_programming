@@ -3,12 +3,9 @@
 
 
 class Node:
-    """
-    Defines a node of a singly linked list
-    """
+    """Defines a node of a singly linked list"""
     def __init__(self, data, next_node=None):
-        """
-        Initializes the object class and attributes
+        """Initializes the object class and attributes
 
         Args:
             data: The data stored in the node
@@ -19,8 +16,7 @@ class Node:
 
     @property
     def data(self):
-        """
-        Retuns the data stored in the node.
+        """Retuns the data stored in the node.
 
         Args:
             value: The node data value
@@ -35,8 +31,7 @@ class Node:
 
     @property
     def next_node(self):
-        """
-        Returns the next node in the list (None if tail).
+        """Returns the next node in the list (None if tail).
 
         Args:
             value: next node value
@@ -71,8 +66,7 @@ class SinglyLinkedList:
         return output[:-1]
 
     def sorted_insert(self, value):
-        """
-        Inserts a new node into the list in ascending order.
+        """Inserts a new node into the list in ascending order.
 
         Args:
             value: The node data value
