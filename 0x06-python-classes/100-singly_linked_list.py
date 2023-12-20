@@ -2,18 +2,17 @@
 # 100-singly_linked_list.py by Oluwaseun Akinbo
 
 
-"""
-Defines a node of a singly linked list
-"""
-
-
 class Node:
+    """
+    Defines a node of a singly linked list
+    """
     def __init__(self, data, next_node=None):
         """
         Initializes the object class and attributes
+
         Args:
             data: The data stored in the node
-            next_: The next node in the list (default: None)
+            next_node: The next node in the list (default: None)
         """
         self.__data = data
         self.__next_node = next_node
@@ -22,14 +21,14 @@ class Node:
     def data(self):
         """
         Retuns the data stored in the node.
+
+        Args:
+            value: The node data value
         """
         return self.__data
 
     @data.setter
     def data(self, value):
-        """
-        Sets the data stored in the node, validating its type for safety.
-        """
         if not isinstance(value, int):
             raise TypeError("data must be an integer")
         self.__data = value
@@ -38,12 +37,14 @@ class Node:
     def next_node(self):
         """
         Returns the next node in the list (None if tail).
+
+        Args:
+            value: next node value
         """
         return self.__next_node
 
     @next_node.setter
     def next_node(self, value):
-        """ Sets the next node in the list, ensuring it's a Node or None. """
         if isinstance(value, Node) or value is None:
             self.__next_node = value
         else:
@@ -53,7 +54,11 @@ class Node:
 class SinglyLinkedList:
     """Represents a singly linked list."""
     def __init__(self):
-        """Initializes the linked lidt """
+        """Initializes the linked list
+
+        Args:
+            head: The head of the linked list
+        """
         self.__head = None
 
     def __str__(self):
@@ -68,6 +73,7 @@ class SinglyLinkedList:
     def sorted_insert(self, value):
         """
         Inserts a new node into the list in ascending order.
+
         Args:
             value: The node data value
         """
