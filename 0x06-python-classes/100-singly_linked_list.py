@@ -53,9 +53,11 @@ class Node:
 class SinglyLinkedList:
     """Represents a singly linked list."""
     def __init__(self):
+        """Initializes the linked lidt """
         self.__head = None
 
     def __str__(self):
+        """Prints the list"""
         current = self.__head
         output = ""
         while current:
@@ -64,8 +66,17 @@ class SinglyLinkedList:
         return output[:-1]
 
     def sorted_insert(self, value):
-        """Inserts a new node into the list in ascending order."""
+        """
+        Inserts a new node into the list in ascending order.
+        Args:
+            value: The node data value
+        """
         new_node = Node(value)
+
+        if not self.__head:
+            self.__head = new_node
+            return
+
         current = self.__head
         previous = None
 
