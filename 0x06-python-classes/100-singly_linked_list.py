@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # 100-singly_linked_list.py by Oluwaseun Akinbo
-
+"""Singly Linked List"""
 
 class Node:
     """Defines a node of a singly linked list"""
@@ -25,6 +25,7 @@ class Node:
 
     @data.setter
     def data(self, value):
+        """Modifies the data value"""
         if not isinstance(value, int):
             raise TypeError("data must be an integer")
         self.__data = value
@@ -40,6 +41,7 @@ class Node:
 
     @next_node.setter
     def next_node(self, value):
+        "Modifies the node value"
         if isinstance(value, Node) or value is None:
             self.__next_node = value
         else:
