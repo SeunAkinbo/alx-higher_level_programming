@@ -2,6 +2,7 @@
 # 100-singly_linked_list.py by Oluwaseun Akinbo
 """Singly Linked List"""
 
+
 class Node:
     """Defines a node of a singly linked list"""
     def __init__(self, data, next_node=None):
