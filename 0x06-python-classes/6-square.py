@@ -6,15 +6,15 @@ class Square:
     """Defines a class Square"""
     def __init__(self, size=0, position=(0, 0)):
         """__init__ Initializing the class object with attribute.
-
-            Args:
-            __size: A private instance attribute
-            __position: A private instance attribute
+        Args:
+        __size: A private instance attribute
+        __position: A private instance attribute
         """
         self.__size = size
         self.__position = position
 
     def __str__(self):
+        """prints the string"""
         self.my_print()
 
     @property
@@ -26,9 +26,6 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """Property setter that allows modifying
-        __size attribute indirectly
-        """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -44,14 +41,10 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """Property setter that allows modifying
-        __position attribute indirectly and checks
-        for conditionals
-        """
         if not isinstance(value, tuple) or len(value) != 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
+            raise TypeError("position must be a tuple of 2 values")
         if not all(isinstance(x, int) and x >= 0 for x in value):
-            raise TypeError("position must be a tuple of 2 positive integers")
+            raise TypeError("position elements must be non-negative integers")
         self.__position = value
 
     def area(self):
