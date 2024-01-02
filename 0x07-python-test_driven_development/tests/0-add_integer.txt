@@ -7,29 +7,36 @@ Using ``add_integer``
 First import ``add_integer`` from ``0-add_integer`` module:
 	>>> add = __import__('0-add_integer').add_integer
 
+
 Test Case 1 (Two single digits):
 	>>> add(4, 5)
 	9
+
 
 Test Case 2 (Two negative integers):
 	>>> add(-3, -2)
 	-5
 
+
 Test Case 3 (One positive integer value):
 	>>> add(7)
 	105
+
 
 Test Case 4 (Add two one float and one integer):
 	>>> add(20.6, 12)
 	32
 
+
 Test Case 5 (One float value):
 	>>> add(12.5)
 	110
 
+
 Tset Case 6 (Two long integers):
 	>>> add(100000000, 100000000)
 	200000000
+
 
 Test Case 7 (One invalid parameter):
 	>>> add(32, "ALX is cool")
@@ -37,9 +44,24 @@ Test Case 7 (One invalid parameter):
 	...
 	TypeError: b must be an integer
 
+
 Test Case 8 (No parameters given):
 	>>> add(None)
 	Traceback (most recent call last):
         ...
         TypeError: a must be an integer
+
+
+Test Case 9 (adding infinity):
+	>>> add(float('inf'), float('-inf'))
+	Traceback (most recent call last):
+        ...
+	OverflowError: cannot convert float infinity to integer
+
+
+Test Case 10 (adding not a number to integer):
+	>>> add(float('nan'), 54)
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
 
