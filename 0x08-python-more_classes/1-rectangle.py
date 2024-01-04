@@ -12,11 +12,12 @@ class Rectangle:
         Args:
             - width: A positive integer initialized to 0
             - heigth: A positive integer initialized to 0
-        '''
+        
         if not isinstance(width, int):
             raise TypeError("width must be an integer")
         if not isinstance(height, int):
             raise TypeError("height must be an integer")
+        '''
         self.__width = width
         self.__height = height
 
