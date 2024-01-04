@@ -7,7 +7,7 @@
 class Rectangle:
     '''A rectangle class
     '''
-    def __init__ (self, width=0, height=0):
+    def __init__(self, width=0, height=0):
         ''' __init__ initializing the class object with attribute
         Args:
             - width: A positive integer initialized to 0
