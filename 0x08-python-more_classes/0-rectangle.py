@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
-'''A rectangle class
+'''A 0-rectangle Module
 '''
 
 
 class Rectangle:
+    '''A rectangle class
+    '''
     pass
