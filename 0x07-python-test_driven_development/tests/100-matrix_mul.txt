@@ -1,0 +1,60 @@
+The ``100-matrix_mul`` module
+=============================
+
+Function ``matrix_mul``
+-----------------------------
+
+From ``100-matrix_mul`` import ``matrix_mul``:
+	>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+
+Test Case 1 (Both integer list parameters):
+	>>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+	[[13, 16]]
+
+
+Test Case 2 (Both float list parameter):
+	>>> matrix_mul([[1.0, 2.0], [3.0, 4.0]], [[1.0, 2.0], [3.0, 4.0]])
+	[[7.0, 10.0], [15.0, 22.0]]
+
+
+Test Case 3 (First parameter not a list of list):
+	>>> matrix_mul([(5, 6), (7, 8)], [[1, 2], [3, 4]])
+	Traceback (most recent call last):
+        ...
+        TypeError: m_a must be a list of lists
+
+
+Test Case 4 (Second parameter not a list of list):
+	>>> matrix_mul([[5, 6], [7, 8]], [(1, 2), (3, 4)])
+        Traceback (most recent call last):
+        ...
+        TypeError: m_b must be a list of lists
+
+
+Test Case 5 (First Parameter empty list):
+	>>> matrix_mul([], [[1, 2], [3, 4]])
+        Traceback (most recent call last):
+        ...
+	ValueError: m_a can't be empty
+
+
+Test Case 6 (Second Parameter empty list):
+	>>> matrix_mul([[1, 2], [3, 4]], [])
+        Traceback (most recent call last):
+        ...
+        ValueError: m_b can't be empty
+
+
+Test Case 8 (Non-homogeneous first parameter list):
+	>>> matrix_mul([[3, "9"], [1, 2]], [[5, 10], [3, 8]])
+	Traceback (most recent call last):
+        ...
+        TypeError: m_a should contain only integers or floats
+
+
+Test Case 9 (Non-homogeneous second parameter list):
+        >>> matrix_mul([[3, 9], [2, 4]], [["5", 10], [1, 1]])
+        Traceback (most recent call last):
+        ...
+        TypeError: m_b should contain only integers or floats
