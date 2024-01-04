@@ -7,7 +7,13 @@ import sys
 
 
 def is_safe(board, row, col, n):
-    '''Check if there is a queen in the same column'''
+    '''Check if there is a queen in the same column
+    Args:
+        - board (Integer)
+        - row (Integer)
+        - col (Integer)
+        - n (Integer)
+    '''
     for i in range(row):
         if board[i] == col or \
                 board[i] - i == col - row or \
@@ -17,12 +23,23 @@ def is_safe(board, row, col, n):
 
 
 def print_solution(board, n):
+    '''Prints the solution to the standard out
+    Args:
+        - board (Integer)
+        - n (Integer)
+    '''
     for i in range(n):
         print("[" + str(i) + ", " + str(board[i]) + "]", end=" ")
     print()
 
 
 def solve_nqueens(board, row, n):
+    '''Solves the N queens puzzle
+    Args:
+        - board (Integer)
+        - row (Integer)
+        - n (Integer)
+    '''
     if row == n:
         print_solution(board, n)
         return
@@ -34,6 +51,10 @@ def solve_nqueens(board, row, n):
 
 
 def nqueens(n):
+    '''Executes the nqueens
+    Args:
+        - n (Integer)
+    '''
     if not isinstance(n, int):
         print("N must be a number")
         sys.exit(1)
