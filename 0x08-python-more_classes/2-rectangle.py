@@ -59,9 +59,11 @@ class Rectangle:
         self.__height = value
 
     def area(self):
+        '''Function computes the area of a rectangle'''
         return self.height * self.width
 
     def perimeter(self):
+        '''Function computes the perimeter of a rectangle'''
         if self.height == 0 or self.width == 0:
             return 0
         else:
