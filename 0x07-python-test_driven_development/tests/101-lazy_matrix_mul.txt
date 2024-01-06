@@ -1,0 +1,51 @@
+The ``101-lazy_matrix_mul`` module
+=====================================
+
+``lazy_matrix`` function
+-------------------------------------
+
+From ``101-lazy_matrix_mul`` import ``lazy_matrix``:
+	>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+
+Test Case (Equal List parameters):
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+    	array([[19, 22],
+	       [43, 50]])
+
+
+Test Case (Unequal List numbers parameters):
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6, 7], [8, 9, 10]])
+	array([[21, 24, 27],
+               [47, 54, 61]])
+
+Test Case (Unequal List parameters):
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [5, 6])
+	array([17, 39])
+
+Test Case (Different type and one list):
+	>>> lazy_matrix_mul(123, [[1, 2], [3, 4]])
+	array([[123, 246],
+               [369, 492]])
+
+
+Test Case (Not a List):
+	>>> lazy_matrix_mul(1, [])
+	array([], dtype=int64)
+
+
+Test Case (Not a list of lists):
+	>>> lazy_matrix_mul([1], 2)
+	array([2])
+
+
+Test Case (Empty matrices):
+	>>> lazy_matrix_mul([], [])
+	False
+
+
+Test Case (Non numeric element):
+	>>> lazy_matrix_mul([[1, 2]], [[3, 4], "a"])
+	Traceback (most recent call last):
+  	...
+	ValueError: setting an array element with a sequence
