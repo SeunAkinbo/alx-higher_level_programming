@@ -40,3 +40,28 @@ Test Case (Creating a list with a singlge element):
         >>> single_element_list = MyList([42])
         >>> single_element_list.print_sorted()
         [42]
+
+
+Test Case (No object defined):
+	>>> my_list2.print_sorted()
+	Traceback (most recent call last):
+	...
+	NameError: name 'my_list2' is not defined
+
+
+Test Case (Parent Object):
+	>>> my_list = [2, 4, 6]
+	>>> my_list.print_sorted()
+	Traceback (most recent call last):
+	...
+	AttributeError: 'list' object has no attribute 'print_sorted'
+
+
+Test Case (Negative numbers):
+	>>> MyList = __import__('1-my_list').MyList
+	>>> my_list = MyList()
+	>>> my_list.append(-1)
+	>>> my_list.append(-9)
+	>>> my_list.append(-3)
+	>>> my_list.print_sorted()
+	[-9, -3, -1]
