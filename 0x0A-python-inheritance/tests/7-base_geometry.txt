@@ -52,3 +52,24 @@ Test Case (Negative value):
         Traceback (most recent call last):
         ...
         ValueError: heigth must be greater than 0
+
+
+Test Case (Boolean value):
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("width", True)
+
+
+Test Case (One argument):
+	>>> bg = BaseGeometry()
+        >>> bg.integer_validator("width")
+	Traceback (most recent call last):
+        ...
+        TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+
+Test Case (No arguments):
+	 >>> bg = BaseGeometry()
+        >>> bg.integer_validator()
+        Traceback (most recent call last):
+        ...
+        TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
