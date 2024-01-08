@@ -68,8 +68,24 @@ Test Case (One argument):
 
 
 Test Case (No arguments):
-	 >>> bg = BaseGeometry()
+	>>> bg = BaseGeometry()
         >>> bg.integer_validator()
         Traceback (most recent call last):
         ...
         TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+
+Test Case (An iterable as value argument):
+	>>> bg = BaseGeometry()
+        >>> bg.integer_validator("heigth", [1, 2, 3])
+        Traceback (most recent call last):
+        ...
+        TypeError: heigth must be an integer
+
+
+Test Case (3 arguments):
+        >>> bg = BaseGeometry()
+        >>> bg.integer_validator("width", 12, 40)
+        Traceback (most recent call last):
+        ...
+	TypeError: integer_validator() takes 3 positional arguments but 4 were given
