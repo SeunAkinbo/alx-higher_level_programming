@@ -33,6 +33,7 @@ Test Case (Clearing the list):
 Test Case (Creating an empty list):
         >>> empty_list = MyList()
         >>> empty_list.print_sorted()
+	[]
 
 
 Test Case (Creating a list with a singlge element):
