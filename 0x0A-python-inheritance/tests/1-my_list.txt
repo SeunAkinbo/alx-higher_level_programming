@@ -1,0 +1,41 @@
+Module ``1-my_list``
+=======================================
+
+``MyList`` inherits from ``list`` class
+---------------------------------------
+
+From module ``1-my_list`` import ``MyList``:
+        >>> MyList = __import__('1-my_list').MyList
+
+
+Test Case (Adding List):
+        >>> my_list = MyList([3, 1, 4, 1, 5, 9, 2, 6, 5])
+
+
+Test Case (print_sorted method):
+        >>> my_list.print_sorted()
+        [1, 1, 2, 3, 4, 5, 5, 6, 9]
+
+
+Test Case (Adding elements to the list):
+        >>> my_list.append(7)
+        >>> my_list.extend([8, 0])
+        >>> my_list.print_sorted()
+        [0, 1, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9]
+
+
+Test Case (Clearing the list):
+        >>> my_list.clear()
+        >>> my_list.print_sorted()
+        []
+
+
+Test Case (Creating an empty list):
+        >>> empty_list = MyList()
+        >>> empty_list.print_sorted()
+
+
+Test Case (Creating a list with a singlge element):
+        >>> single_element_list = MyList([42])
+        >>> single_element_list.print_sorted()
+        [42]
