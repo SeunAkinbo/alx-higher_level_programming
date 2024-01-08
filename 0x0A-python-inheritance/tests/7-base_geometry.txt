@@ -1,0 +1,54 @@
+Module ``7-base_geometry``
+==========================
+
+class ``BaseGeometry``
+--------------------------
+
+From ``7-base_geometry`` import ``BaseGeometry``:
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
+Test Case (Validate the area):
+	>>> bg = BaseGeometry()
+	>>> bg.area()
+	Traceback (most recent call last):
+	...
+	Exception: area() is not implemented
+
+
+Test Case (Non integer value):
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("width", "12")
+	Traceback (most recent call last):
+	...
+	TypeError: width must be an integer
+
+
+Test Case (Proper values):
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("heigth", 10)
+
+
+Test Case (Improper value):
+	>>> bg = BaseGeometry()
+	>>> bg.integer_validator("heigth", None)
+	Traceback (most recent call last):
+        ...
+        TypeError: heigth must be an integer
+
+
+
+Test Case (0 value):
+	>>> bg = BaseGeometry()
+        >>> bg.integer_validator("heigth", 0)
+	Traceback (most recent call last):
+	...
+	ValueError: heigth must be greater than 0
+
+
+Test Case (Negative value):
+        >>> bg = BaseGeometry()
+        >>> bg.integer_validator("heigth", -8)
+        Traceback (most recent call last):
+        ...
+        ValueError: heigth must be greater than 0
