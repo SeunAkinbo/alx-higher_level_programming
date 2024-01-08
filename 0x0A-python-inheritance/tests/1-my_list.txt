@@ -75,3 +75,12 @@ Test Case (Heterogeneous List Items):
 	Traceback (most recent call last):
 	...
 	TypeError: '<' not supported between instances of 'int' and 'str'
+
+
+Test Case (Same number):
+	>>> my_list = MyList()
+	>>> my_list.append(2)
+	>>> my_list.append(2)
+	>>> my_list.append(2)
+	>>> my_list.print_sorted()
+	[2, 2, 2]
