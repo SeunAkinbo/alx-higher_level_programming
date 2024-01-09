@@ -84,3 +84,10 @@ Test Case (Same number):
 	>>> my_list.append(2)
 	>>> my_list.print_sorted()
 	[2, 2, 2]
+
+
+Test Case (Parsing a list):
+	>>> lst = [1, 2, 3, 4, 5]
+	>>> my_list = MyList(lst)
+	>>> my_list.print_sorted()
+	[1, 2, 3, 4, 5]
