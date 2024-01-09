@@ -9,5 +9,5 @@ def append_write(filename="", text=""):
         - filename: The file path
         - text: String to write to file
     '''
-    with open(filename, "r+") as file:
+    with open(filename, "a") as file:
         return file.write(text)
