@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Module: 9-student.py'''
+'''Module: 11-student.py'''
 
 
 class Student:
@@ -15,10 +15,26 @@ class Student:
         self.last_name = last_name
         self.age = age
 
-    def to_json(self):
-        '''Returns the dictionary description of the student class'''
+    def to_json(self, attrs=None):
+        '''Returns the dictionary description of the student class
+        Args:
+            - attrs
+        return: object dictionary
+        '''
         obj_dict = {}
-        for key, value in self.__dict__.items():
-            if isinstance(value, (str, int)):
-                obj_dict[key] = value
+        if attrs is None:
+            for key in self.__dict__:
+                obj_dict[key] = getattr(self, key)
+        else:
+            for key in attrs:
+                if hasattr(self, key):
+                    obj_dict[key] = getattr(self, key)
         return obj_dict
+
+    def reload_from_json(self, json):
+        '''Replaces all attributes of the Student instance
+        Args:
+            - json: dictionary representing the attribute
+        '''
+        for key, value in json.items():
+            setattr(self, key, value)
