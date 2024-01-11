@@ -26,7 +26,7 @@ class Rectangle(Base):
         Args:
             - value: integer
         '''
-        self.__validate_integer("width", value)
+        self.__validate_side("width", value)
         self.__width = value
 
     @property
@@ -40,7 +40,7 @@ class Rectangle(Base):
         Args:
             - value: integer
         '''
-        self.__validate_integer("height", value)
+        self.__validate_side("height", value)
         self.__height = value
 
     @property
@@ -54,7 +54,7 @@ class Rectangle(Base):
         Args:
             - value: integer
         '''
-        self.__validate_integer("x", value)
+        self.__validate_axis("x", value)
         self.__x = value
 
     @property
@@ -68,11 +68,17 @@ class Rectangle(Base):
         Args:
             - value: integer
         '''
-        self.__validate_integer("y", value)
+        self.__validate_axis("y", value)
         self.__y = value
 
-    def __validate_integer(self, attr_name, value):
+    def __validate_side(self, attr_name, value):
         if not isinstance(value, int):
-            raise TypeError(f"{attr_name} must be a positive integer")
+            raise TypeError(f"{attr_name} must be an integer")
         if value < 0:
-            raise ValueError(f"{attr_name} must be an integer >= 0")
+            raise ValueError(f"{attr_name} must be > 0")
+
+    def __validate_axis(self, attr_name, value):
+        if not isinstance(value, int):
+            raise TypeError(f"{attr_name} must be an integer")
+        if value < 0:
+            raise ValueError(f"{attr_name} must be >= 0")
