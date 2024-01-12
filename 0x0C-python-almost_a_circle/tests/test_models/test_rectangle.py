@@ -5,6 +5,7 @@ import unittest
 from models.rectangle import Rectangle
 from io import StringIO
 import sys
+from contextlib import redirect_stdout
 
 
 class TestRectangle(unittest.TestCase):
@@ -100,6 +101,24 @@ class TestRectangle(unittest.TestCase):
 
         r2 = Rectangle(2, 2)
         expected_output = "##\n##\n"
+        with StringIO() as captured_output:
+            sys.stdout = captured_output
+            r2.display()
+            sys.stdout = sys.__stdout__
+            self.assertEqual(captured_output.getvalue(), expected_output)
+
+    def test_display_with_position(self):
+        '''Testing for display with position'''
+        r1 = Rectangle(2, 3, 2, 2)
+        expected_output = "\n\n  ##\n  ##\n  ##\n"
+        with StringIO() as captured_output:
+            sys.stdout = captured_output
+            r1.display()
+            sys.stdout = sys.__stdout__
+            self.assertEqual(captured_output.getvalue(), expected_output)
+
+        r2 = Rectangle(3, 2, 1, 0)
+        expected_output = " ###\n ###\n"
         with StringIO() as captured_output:
             sys.stdout = captured_output
             r2.display()
