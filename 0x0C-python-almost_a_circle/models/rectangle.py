@@ -102,12 +102,14 @@ class Rectangle(Base):
 
     def update(self, *args):
         '''Updates the attributes using *args attribute'''
-        self.id = args[0]
-        __validate_sides("width", args[1])
-        self.width = args[1]
-        __validate_sides("height", args[2])
-        self.height = args[2]
-        __validate_axis("x", args[3])
-        self.x = args[3]
-        __validate_axis("y", args[4])
-        self.y = args[4]
+        attrs = ["id", "width", "height", "x", "y"]
+        for i, arg in enumerate(args):
+            if i < len(attrs):
+                if attrs[i] == "id":
+                    self.id = arg
+                if attrs[i] in ["width", "height"]:
+                    self.__validate_side(attrs[i], arg)
+                    setattr(self, attrs[i], arg)
+                if attrs[i] in ["x", "y"]:
+                    self.__validate_axis(attrs[i], arg)
+                    setattr(self, attrs[i], arg)
