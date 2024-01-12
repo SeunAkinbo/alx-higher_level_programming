@@ -3,6 +3,8 @@
 
 import unittest
 from models.rectangle import Rectangle
+from io import StringIO
+import sys
 
 
 class TestRectangle(unittest.TestCase):
@@ -74,17 +76,35 @@ class TestRectangle(unittest.TestCase):
             self.rect.y = "9"
 
     def test_area(self):
-        '''Testing for area'''
+        '''Testing for area method'''
         rect_1 = Rectangle(5, 10)
         self.assertEqual(rect_1.area(), 50)
 
         with self.assertRaises(ValueError):
             rect_2 = Rectangle(0, 8)
             rect_2.area()
-        
+
         with self.assertRaises(ValueError):
             rect_3 = Rectangle(-2, 7)
             rect_3.area()
+
+    def test_display(self):
+        '''Testing for display method'''
+        r1 = Rectangle(4, 6)
+        expected_output = "####\n####\n####\n####\n####\n####\n"
+        with StringIO() as captured_output:
+            sys.stdout = captured_output
+            r1.display()
+            sys.stdout = sys.__stdout__
+            self.assertEqual(captured_output.getvalue(), expected_output)
+
+        r2 = Rectangle(2, 2)
+        expected_output = "##\n##\n"
+        with StringIO() as captured_output:
+            sys.stdout = captured_output
+            r2.display()
+            sys.stdout = sys.__stdout__
+            self.assertEqual(captured_output.getvalue(), expected_output)
 
 
 if __name__ == '__main__':
