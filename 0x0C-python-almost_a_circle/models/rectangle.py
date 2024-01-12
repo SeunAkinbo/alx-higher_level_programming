@@ -91,3 +91,7 @@ class Rectangle(Base):
         '''Prints the rectangle to the stdout'''
         for i in range(self.height):
             print("#" * self.width)
+
+    def __str__(self):
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - "\
+                f"{self.width}/{self.height}"
