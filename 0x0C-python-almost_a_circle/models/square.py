@@ -9,9 +9,18 @@ class Square(Rectangle):
     def __init__(self, size, x=0, y=0, id=None):
         '''Initializing the Square class object'''
         super().__init__(size, size, x, y, id)
-        if isinstance(size, int) and size > 0:
-            self.size = size
 
     def __str__(self):
         '''__str__ method update'''
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
+
+    @property
+    def size(self):
+        '''Getter for size'''
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        '''Setter for size'''
+        self.width = value
+        self.height = value
