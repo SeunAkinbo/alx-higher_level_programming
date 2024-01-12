@@ -132,8 +132,8 @@ class Rectangle(Base):
                 if key == "id":
                     setattr(self, key, value)
                 if key in ["width", "height"]:
-                        self.__validate_side(key, value)
-                        setattr(self, key, value)
+                    self.__validate_side(key, value)
+                    setattr(self, key, value)
                 if key in ["x", "y"]:
-                        self.__validate_axis(key, value)
-                        setattr(self, key, value)
+                    self.__validate_axis(key, value)
+                    setattr(self, key, value)
