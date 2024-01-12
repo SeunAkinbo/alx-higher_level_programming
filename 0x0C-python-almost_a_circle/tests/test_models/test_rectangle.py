@@ -116,6 +116,7 @@ class TestRectangle(unittest.TestCase):
     def test_display_with_position(self):
         '''Testing for display with position'''
         r1 = Rectangle(2, 3, 2, 2)
+        # Check all position argument assigned
         expected_output = "\n\n  ##\n  ##\n  ##\n"
         with StringIO() as captured_output:
             sys.stdout = captured_output
@@ -124,6 +125,7 @@ class TestRectangle(unittest.TestCase):
             self.assertEqual(captured_output.getvalue(), expected_output)
 
         r2 = Rectangle(3, 2, 1, 0)
+        # Check y = 0
         expected_output = " ###\n ###\n"
         with StringIO() as captured_output:
             sys.stdout = captured_output
@@ -148,6 +150,22 @@ class TestRectangle(unittest.TestCase):
         # Update with no arguments
         r.update()
         self.assertEqual(str(r), "[Rectangle] (101) 3/4 - 2/15")
+
+        # Update with one kwargs
+        r.update(height=5)
+        self.assertEqual(str(r), "[Rectangle] (101) 3/4 - 2/5")
+
+        # Update with all kwargs
+        r.update(id=323, height=4, width=6, x=2, y=9)
+        self.assertEqual(str(r), "[Rectangle] (323) 2/9 - 6/4")
+
+        # Update with two kwargs
+        r.update(width=10, y=2)
+        self.assertEqual(str(r), "[Rectangle] (323) 2/2 - 10/4")
+
+        # Update with three kwargs
+        r.update(height=20, x=1, y=2)
+        self.assertEqual(str(r), "[Rectangle] (323) 1/2 - 10/20")
 
 
 if __name__ == '__main__':

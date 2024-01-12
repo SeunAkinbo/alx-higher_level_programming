@@ -85,6 +85,16 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError(f"{attr_name} must be >= 0")
 
+    def to_dictionary(self):
+        '''Return dictionary representation of the rectangle.'''
+        return {
+                'id': self.id,
+                'width': self.width,
+                'height': self.height,
+                'x': self.x,
+                'y': self.y
+                }
+
     def area(self):
         '''Returns the area of a rectangle'''
         return self.width * self.height
@@ -100,16 +110,30 @@ class Rectangle(Base):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - "\
                 f"{self.width}/{self.height}"
 
-    def update(self, *args):
-        '''Updates the attributes using *args attribute'''
+    def update(self, *args, **kwargs):
+        '''Updates the attributes using *args if available
+        or kwargs attribute otherwise
+        '''
         attrs = ["id", "width", "height", "x", "y"]
-        for i, arg in enumerate(args):
-            if i < len(attrs):
-                if attrs[i] == "id":
-                    self.id = arg
-                if attrs[i] in ["width", "height"]:
-                    self.__validate_side(attrs[i], arg)
-                    setattr(self, attrs[i], arg)
-                if attrs[i] in ["x", "y"]:
-                    self.__validate_axis(attrs[i], arg)
-                    setattr(self, attrs[i], arg)
+
+        if args:
+            for i, arg in enumerate(args):
+                if i < len(attrs):
+                    if attrs[i] == "id":
+                        self.id = arg
+                    if attrs[i] in ["width", "height"]:
+                        self.__validate_side(attrs[i], arg)
+                        setattr(self, attrs[i], arg)
+                    if attrs[i] in ["x", "y"]:
+                        self.__validate_axis(attrs[i], arg)
+                        setattr(self, attrs[i], arg)
+        else:
+            for key, value in kwargs.items():
+                if key == "id":
+                    setattr(self, key, value)
+                if key in ["width", "height"]:
+                        self.__validate_side(key, value)
+                        setattr(self, key, value)
+                if key in ["x", "y"]:
+                        self.__validate_axis(key, value)
+                        setattr(self, key, value)
