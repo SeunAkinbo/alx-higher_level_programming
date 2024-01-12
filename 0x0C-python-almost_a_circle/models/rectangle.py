@@ -74,7 +74,7 @@ class Rectangle(Base):
     def __validate_side(self, attr_name, value):
         if not isinstance(value, int):
             raise TypeError(f"{attr_name} must be an integer")
-        if value < 0:
+        if value <= 0:
             raise ValueError(f"{attr_name} must be > 0")
 
     def __validate_axis(self, attr_name, value):
@@ -82,3 +82,7 @@ class Rectangle(Base):
             raise TypeError(f"{attr_name} must be an integer")
         if value < 0:
             raise ValueError(f"{attr_name} must be >= 0")
+
+    def area(self):
+        '''Returns the area of a rectangle'''
+        return self.width * self.height

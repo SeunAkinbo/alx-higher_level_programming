@@ -4,6 +4,7 @@
 import unittest
 from models.rectangle import Rectangle
 
+
 class TestRectangle(unittest.TestCase):
     '''class that test rectangle module'''
     def setUp(self):
@@ -72,6 +73,19 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.rect.y = "9"
 
+    def test_area(self):
+        '''Testing for area'''
+        rect_1 = Rectangle(5, 10)
+        self.assertEqual(rect_1.area(), 50)
+
+        with self.assertRaises(ValueError):
+            rect_2 = Rectangle(0, 8)
+            rect_2.area()
+        
+        with self.assertRaises(ValueError):
+            rect_3 = Rectangle(-2, 7)
+            rect_3.area()
+
+
 if __name__ == '__main__':
     unittest.main()
-
