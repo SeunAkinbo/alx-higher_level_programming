@@ -131,6 +131,24 @@ class TestRectangle(unittest.TestCase):
             sys.stdout = sys.__stdout__
             self.assertEqual(captured_output.getvalue(), expected_output)
 
+    def test_update(self):
+        '''Testing the update method'''
+        r = Rectangle(10, 20, 1, 2, 99)
+        # Check initial state
+        self.assertEqual(str(r), "[Rectangle] (99) 1/2 - 10/20")
+
+        # Update with all arguments
+        r.update(100, 5, 15, 3, 4)
+        self.assertEqual(str(r), "[Rectangle] (100) 3/4 - 5/15")
+
+        # Update with some arguments
+        r.update(101, 2)
+        self.assertEqual(str(r), "[Rectangle] (101) 3/4 - 2/15")
+
+        # Update with no arguments
+        r.update()
+        self.assertEqual(str(r), "[Rectangle] (101) 3/4 - 2/15")
+
 
 if __name__ == '__main__':
     unittest.main()
