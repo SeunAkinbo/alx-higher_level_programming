@@ -107,6 +107,12 @@ class TestRectangle(unittest.TestCase):
             sys.stdout = sys.__stdout__
             self.assertEqual(captured_output.getvalue(), expected_output)
 
+    def test_str_method(self):
+        '''Test the __str__ method'''
+        r = Rectangle(4, 5, 2, 2, 10)
+        expected_output = "[Rectangle] (10) 2/2 - 4/5"
+        self.assertEqual(str(r), expected_output)
+
     def test_display_with_position(self):
         '''Testing for display with position'''
         r1 = Rectangle(2, 3, 2, 2)
