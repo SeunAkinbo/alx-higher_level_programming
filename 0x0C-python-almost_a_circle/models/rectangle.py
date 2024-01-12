@@ -89,8 +89,10 @@ class Rectangle(Base):
 
     def display(self):
         '''Prints the rectangle to the stdout'''
+        if self.y != 0:
+            print("\n" * (self.y - 1))
         for i in range(self.height):
-            print("#" * self.width)
+            print(" " * self.x + "#" * self.width)
 
     def __str__(self):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - "\
