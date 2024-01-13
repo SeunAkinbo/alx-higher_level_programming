@@ -3,6 +3,9 @@
 
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
+import os
 
 
 class TestBase(unittest.TestCase):
@@ -55,6 +58,49 @@ class TestBase(unittest.TestCase):
         # Test with None
         result_none = Base.to_json_string(None)
         self.assertEqual(result_none, "[]")
+
+    def test_save_to_file(self):
+        '''Testing save_to_file'''
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        with open("Rectangle.json", "r", encoding="utf-8") as file:
+            content = file.read()
+        expected_output = '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}, {"x": 0, "width": 2, "id": 2, "height": 4, "y": 0}]'
+        self.assertEqual(content, expected_output)
+
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+        Square.save_to_file(list_squares_input)
+        with open("Square.json", "r", encoding="utf-8") as file:
+            content = file.read()
+        expected_output = '[{"size": 5, "id": 3}, {"size": 7, "id": 4, "x": 9, "y": 1}]'
+        self.assertEqual(content, expected_output)
+
+    def test_save_to_file_empty_list(self):
+        '''Testing for an empty list'''
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r", encoding="utf-8") as file:
+            content = file.read()
+        self.assertEqual(content, '[]')
+
+        Square.save_to_file([])
+        with open("Square.json", "r", encoding="utf-8") as file:
+            content = file.read()
+        self.assertEqual(content, '[]')
+
+    def tearDown(self):
+        '''Deleting the files created during the test'''
+        try:
+            os.remove("Rectangle.json")
+        except FileNotFoundError:
+            pass
+        try:
+            os.remove("Square.json")
+        except FileNotFoundError:
+            pass
 
 
 if __name__ == '__main__':
