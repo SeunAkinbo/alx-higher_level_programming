@@ -81,6 +81,23 @@ class TestBase(unittest.TestCase):
         expected_output = '[{"id": 8, "size": 5, "x": 0, "y": 0}, {"id": 9, "size": 7, "x": 9, "y": 1}]'
         self.assertEqual(content, expected_output)
 
+    def test_from_json_string(self):
+        '''Testing from_json_string method'''
+        
+        # Test empty string
+        result = Base.from_json_string("")
+        self.assertEqual(result, '[]')
+
+        # Test None
+        result = Base.from_json_string(None)
+        self.assertEqual(result, '[]')
+
+        # Test valid JSON string
+        json_string = '[{"id": 1, "name": "example"}, {"id": 2, "name": "test"}]'
+        result = Base.from_json_string(json_string)
+        expected = [{"id": 1, "name": "example"}, {"id": 2, "name": "test"}]
+        self.assertEqual(result, expected)
+
     def test_save_to_file_empty_list(self):
         '''Testing for an empty list'''
         Rectangle.save_to_file([])
