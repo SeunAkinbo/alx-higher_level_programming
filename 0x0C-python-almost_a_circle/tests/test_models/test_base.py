@@ -47,7 +47,7 @@ class TestBase(unittest.TestCase):
         # Test with empty list
         empty_list = []
         result_empty = Base.to_json_string(empty_list)
-        self.assertEqual(result_empty, "[]")
+        self.assertEqual(result_empty, '[]')
 
         # Test with a list of dictionaries
         dict_list = [{'id': 1, 'name': 'Alice'}, {'id': 2, 'name': 'Bob'}]
@@ -58,7 +58,7 @@ class TestBase(unittest.TestCase):
 
         # Test with None
         result_none = Base.to_json_string(None)
-        self.assertEqual(result_none, "[]")
+        self.assertEqual(result_none, '[]')
 
     def test_save_to_file(self):
         '''Testing save_to_file'''
@@ -68,8 +68,8 @@ class TestBase(unittest.TestCase):
         Rectangle.save_to_file(list_rectangles_input)
         with open("Rectangle.json", "r", encoding="utf-8") as file:
             content = file.read()
-        expected_output = '[{"id": 8, "width": 10, "height": 7, "x": 2, '\
-            '"y": 8}, {"id": 9, "width": 2, "height": 4, "x": 0, "y": 0}]'
+        expected_output = '[{"id": 16, "width": 10, "height": 7, "x": 2, '\
+            '"y": 8}, {"id": 17, "width": 2, "height": 4, "x": 0, "y": 0}]'
         self.assertEqual(content, expected_output)
 
         s1 = Square(5)
@@ -78,22 +78,24 @@ class TestBase(unittest.TestCase):
         Square.save_to_file(list_squares_input)
         with open("Square.json", "r", encoding="utf-8") as file:
             content = file.read()
-        expected_output = '[{"id": 10, "size": 5, "x": 0, "y": 0}, {"id": 11, "size": 7, "x": 9, "y": 1}]'
+        expected_output = '[{"id": 18, "size": 5, "x": 0, "y": 0},'\
+            ' {"id": 19, "size": 7, "x": 9, "y": 1}]'
         self.assertEqual(content, expected_output)
 
     def test_from_json_string(self):
         '''Testing from_json_string method'''
-        
+
         # Test empty string
         result = Base.from_json_string("")
-        self.assertEqual(result, '[]')
+        self.assertEqual(result, [])
 
         # Test None
         result = Base.from_json_string(None)
-        self.assertEqual(result, '[]')
+        self.assertEqual(result, [])
 
         # Test valid JSON string
-        json_string = '[{"id": 1, "name": "example"}, {"id": 2, "name": "test"}]'
+        json_string = '[{"id": 1, "name": "example"},'\
+            ' {"id": 2, "name": "test"}]'
         result = Base.from_json_string(json_string)
         expected = [{"id": 1, "name": "example"}, {"id": 2, "name": "test"}]
         self.assertEqual(result, expected)
@@ -115,6 +117,33 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(square_instance, Square)
         self.assertEqual(square_instance.id, 20)
         self.assertEqual(square_instance.size, 4)
+
+    def test_load_from_file(self):
+        '''Test load_from_file method'''
+
+        # Test when the file doesn't exist
+        result_empty = Base.load_from_file()
+        self.assertEqual(result_empty, [])
+
+        # Test when the file exists (Rectangle instances)
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+        result_rectangles = Rectangle.load_from_file()
+        self.assertIsInstance(result_rectangles[0], Rectangle)
+        self.assertEqual(result_rectangles[0].to_dictionary(), r1.to_dictionary())
+        self.assertIsInstance(result_rectangles[1], Rectangle)
+        self.assertEqual(result_rectangles[1].to_dictionary(), r2.to_dictionary())
+
+        # Test when the file exists (Square instances)
+        s1 = Square(5)
+        s2 = Square(9, 1, 3)
+        Square.save_to_file([s1, s2])
+        result_squares = Square.load_from_file()
+        self.assertIsInstance(result_squares[0], Square)
+        self.assertEqual(result_squares[0].to_dictionary(), s1.to_dictionary())
+        self.assertIsInstance(result_squares[1], Square)
+        self.assertEqual(result_squares[1].to_dictionary(), s2.to_dictionary())
 
     def test_save_to_file_empty_list(self):
         '''Testing for an empty list'''
