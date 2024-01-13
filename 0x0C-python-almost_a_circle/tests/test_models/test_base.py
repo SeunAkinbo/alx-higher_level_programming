@@ -13,8 +13,8 @@ class TestBase(unittest.TestCase):
         '''Test if the id is incremented correctly when not provided'''
         base_1 = Base()
         base_2 = Base()
-        self.assertEqual(base_1.id, 1)
-        self.assertEqual(base_2.id, 2)
+        self.assertEqual(base_1.id, 3)
+        self.assertEqual(base_2.id, 4)
 
     def test_id_assigned(self):
         '''Test if the id is assigned correctly when provided'''
@@ -28,7 +28,7 @@ class TestBase(unittest.TestCase):
         base_1 = Base(5)
         base_2 = Base()
         self.assertEqual(base_1.id, 5)
-        self.assertEqual(base_2.id, 3)
+        self.assertEqual(base_2.id, 5)
 
     def test_id_type(self):
         '''Test if the id is an integer'''
@@ -68,8 +68,8 @@ class TestBase(unittest.TestCase):
         Rectangle.save_to_file(list_rectangles_input)
         with open("Rectangle.json", "r", encoding="utf-8") as file:
             content = file.read()
-        expected_output = '[{"id": 6, "width": 10, "height": 7, "x": 2, '\
-            '"y": 8}, {"id": 7, "width": 2, "height": 4, "x": 0, "y": 0}]'
+        expected_output = '[{"id": 8, "width": 10, "height": 7, "x": 2, '\
+            '"y": 8}, {"id": 9, "width": 2, "height": 4, "x": 0, "y": 0}]'
         self.assertEqual(content, expected_output)
 
         s1 = Square(5)
@@ -78,7 +78,7 @@ class TestBase(unittest.TestCase):
         Square.save_to_file(list_squares_input)
         with open("Square.json", "r", encoding="utf-8") as file:
             content = file.read()
-        expected_output = '[{"id": 8, "size": 5, "x": 0, "y": 0}, {"id": 9, "size": 7, "x": 9, "y": 1}]'
+        expected_output = '[{"id": 10, "size": 5, "x": 0, "y": 0}, {"id": 11, "size": 7, "x": 9, "y": 1}]'
         self.assertEqual(content, expected_output)
 
     def test_from_json_string(self):
@@ -97,6 +97,24 @@ class TestBase(unittest.TestCase):
         result = Base.from_json_string(json_string)
         expected = [{"id": 1, "name": "example"}, {"id": 2, "name": "test"}]
         self.assertEqual(result, expected)
+
+    def test_create_method(self):
+        '''Testing create method'''
+
+        # Test creating a Rectangle instance with specific attributes
+        rectangle_dict = {'id': 10, 'width': 5, 'height': 3}
+        rectangle_instance = Rectangle.create(**rectangle_dict)
+        self.assertIsInstance(rectangle_instance, Rectangle)
+        self.assertEqual(rectangle_instance.id, 10)
+        self.assertEqual(rectangle_instance.width, 5)
+        self.assertEqual(rectangle_instance.height, 3)
+
+        # Test creating a Square instance with specific attributes
+        square_dict = {'id': 20, 'size': 4}
+        square_instance = Square.create(**square_dict)
+        self.assertIsInstance(square_instance, Square)
+        self.assertEqual(square_instance.id, 20)
+        self.assertEqual(square_instance.size, 4)
 
     def test_save_to_file_empty_list(self):
         '''Testing for an empty list'''
