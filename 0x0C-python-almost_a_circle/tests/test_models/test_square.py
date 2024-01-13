@@ -21,3 +21,15 @@ class TestSquare(unittest.TestCase):
         s1 = Square(5)
         s1.size = 10
         self.assertEqual(s1.size, 10)
+
+    def test_update_method(self):
+        """Test update method."""
+        s1 = Square(5)
+        # Four parameter update
+        s1.update(2, 3, 4, 5)
+        self.assertEqual(s1.size, 3)
+        self.assertEqual(s1.width, 3)
+        self.assertEqual(s1.height, 4)
+        self.assertEqual(s1.x, 5)
+        self.assertEqual(s1.y, 0)
+        self.assertEqual(s1.id, 2)
