@@ -38,6 +38,24 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(AttributeError):
             base.__nb_objects
 
+    def test_to_json_string(self):
+        '''Testing the to_json_string method'''
+        
+        # Test with empty list
+        empty_list = []
+        result_empty = Base.to_json_string(empty_list)
+        self.assertEqual(result_empty, "[]")
+
+        # Test with a list of dictionaries
+        dict_list = [{'id': 1, 'name': 'Alice'}, {'id': 2, 'name': 'Bob'}]
+        result_dict_list = Base.to_json_string(dict_list)
+        expected_result = '[{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]'
+        self.assertEqual(result_dict_list, expected_result)
+
+        # Test with None
+        result_none = Base.to_json_string(None)
+        self.assertEqual(result_none, "[]")
+
 
 if __name__ == '__main__':
     unittest.main()
