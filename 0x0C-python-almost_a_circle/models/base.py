@@ -112,7 +112,7 @@ class Base:
                                     'implemented in the child class")
 
     @classmethod
-    def create_from_csv_row(cls, row):
-        '''Return an instance from a CSV row'''
+    def format_csv_load(cls, csv_list):
+        '''Return an instance from a CSV list'''
         raise NotImplementedError("create_from_csv_row method '\
                                     'must be implemented in the child class")

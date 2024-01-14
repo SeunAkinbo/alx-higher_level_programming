@@ -68,8 +68,8 @@ class TestBase(unittest.TestCase):
         Rectangle.save_to_file(list_rectangles_input)
         with open("Rectangle.json", "r", encoding="utf-8") as file:
             content = file.read()
-        expected_output = '[{"id": 16, "width": 10, "height": 7, "x": 2, '\
-            '"y": 8}, {"id": 17, "width": 2, "height": 4, "x": 0, "y": 0}]'
+        expected_output = '[{"id": 18, "width": 10, "height": 7, "x": 2, '\
+            '"y": 8}, {"id": 19, "width": 2, "height": 4, "x": 0, "y": 0}]'
         self.assertEqual(content, expected_output)
 
         s1 = Square(5)
@@ -78,8 +78,8 @@ class TestBase(unittest.TestCase):
         Square.save_to_file(list_squares_input)
         with open("Square.json", "r", encoding="utf-8") as file:
             content = file.read()
-        expected_output = '[{"id": 18, "size": 5, "x": 0, "y": 0},'\
-            ' {"id": 19, "size": 7, "x": 9, "y": 1}]'
+        expected_output = '[{"id": 20, "size": 5, "x": 0, "y": 0},'\
+            ' {"id": 21, "size": 7, "x": 9, "y": 1}]'
         self.assertEqual(content, expected_output)
 
     def test_from_json_string(self):
@@ -147,6 +147,32 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(result_squares[1], Square)
         self.assertEqual(result_squares[1].to_dictionary(), s2.to_dictionary())
 
+    def test_save_to_file_csv(self):
+        '''Testing save_to_file_csv'''
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file_csv(list_rectangles_input)
+
+        with open("Rectangle.csv", "r", encoding="utf-8") as file:
+            content = file.read()
+            self.assertEqual(content, '22,10,7,2,8\n23,2,4,0,0\n')
+
+    def test_load_from_file_csv(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file_csv(list_rectangles_input)
+
+        list_rectangles_output = Rectangle.load_from_file_csv()
+        self.assertEqual(len(list_rectangles_output), 2)
+
+        for i in range(len(list_rectangles_input)):
+            self.assertNotEqual(id(list_rectangles_input[i]),
+                                id(list_rectangles_output[i]))
+            self.assertEqual(list_rectangles_input[i].to_dictionary(),
+                             list_rectangles_output[i].to_dictionary())
+
     def test_save_to_file_empty_list(self):
         '''Testing for an empty list'''
         Rectangle.save_to_file([])
@@ -163,10 +189,12 @@ class TestBase(unittest.TestCase):
         '''Deleting the files created during the test'''
         try:
             os.remove("Rectangle.json")
+            os.remove("Rectangle.csv")
         except FileNotFoundError:
             pass
         try:
             os.remove("Square.json")
+            os.remove("Square.csv")
         except FileNotFoundError:
             pass
 
