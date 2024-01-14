@@ -137,3 +137,18 @@ class Rectangle(Base):
                 if key in ["x", "y"]:
                     self.__validate_axis(key, value)
                     setattr(self, key, value)
+
+    def to_csv_row(self):
+        '''Return the CSV row representation of the Rectangle instance'''
+        return [self.id, self.width, self.height, self.x, self.y]
+
+    @classmethod
+    def format_csv_load(cls, obj_list):
+        '''Returns Rectangle instance from a CSV obj_list'''
+        rect_list = []
+
+        for row in obj_list:
+            rect = cls(int(row[1]), int(row[2]), int(row[3]),
+                                        int(row[4]), row[0])
+            rect_list.append(rect)
+        return rect_list

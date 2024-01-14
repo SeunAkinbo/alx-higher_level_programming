@@ -2,6 +2,7 @@
 '''Module: base'''
 
 import json
+import csv
 
 
 class Base:
@@ -78,3 +79,40 @@ class Base:
                 return [cls.create(**obj_dict) for obj_dict in list_dicts]
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''Write the CSV string representation of list_objs to a file
+        Args:
+            - list_objs
+        '''
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w") as file:
+            writer = csv.writer(file)
+            if list_objs:
+                for obj in list_objs:
+                    writer.writerow(obj.to_csv_row())
+            else:
+                writer.writerow([])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        '''Return a list of instance from a CSV file'''
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r", newline='', encoding='utf-8') as file:
+                reader = csv.reader(file)
+                return cls.format_csv_load(reader) 
+        except FileNotFoundError:
+            return []
+
+    def to_csv_row(self):
+        '''Return the CSV representation of the instance'''
+        raise NotImplementedError("to_csv_row method must be '\
+                                    'implemented in the child class")
+
+    @classmethod
+    def create_from_csv_row(cls, row):
+        '''Return an instance from a CSV row'''
+        raise NotImplementedError("create_from_csv_row method '\
+                                    'must be implemented in the child class")

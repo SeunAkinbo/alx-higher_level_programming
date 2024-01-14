@@ -131,9 +131,11 @@ class TestBase(unittest.TestCase):
         Rectangle.save_to_file([r1, r2])
         result_rectangles = Rectangle.load_from_file()
         self.assertIsInstance(result_rectangles[0], Rectangle)
-        self.assertEqual(result_rectangles[0].to_dictionary(), r1.to_dictionary())
+        self.assertEqual(result_rectangles[0].to_dictionary(),
+                         r1.to_dictionary())
         self.assertIsInstance(result_rectangles[1], Rectangle)
-        self.assertEqual(result_rectangles[1].to_dictionary(), r2.to_dictionary())
+        self.assertEqual(result_rectangles[1].to_dictionary(),
+                         r2.to_dictionary())
 
         # Test when the file exists (Square instances)
         s1 = Square(5)

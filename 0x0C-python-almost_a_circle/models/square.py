@@ -47,3 +47,18 @@ class Square(Rectangle):
                 'x': self.x,
                 'y': self.y
                 }
+
+    def to_csv_row(self):
+        '''Return the CSV row representation of the Square instance'''
+        return [self.id, self.size, self.x, self.y]
+
+    @classmethod
+    def format_csv_load(cls, obj_list):
+        '''Returns Square instance from a CSV obj_list'''
+        sqr_list = []
+
+        for row in obj_list:
+            sqr = cls(int(row[1]), int(row[2]),
+                        int(row[3]), row[0])
+            sqr_list.append(sqr)
+        return sqr_list
