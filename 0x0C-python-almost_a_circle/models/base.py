@@ -3,6 +3,7 @@
 
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -116,3 +117,29 @@ class Base:
         '''Return an instance from a CSV list'''
         raise NotImplementedError("create_from_csv_row method '\
                                     'must be implemented in the child class")
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        screen = turtle.Screen()
+        screen.bgcolor("white")
+        t = turtle.Turtle()
+        t.speed(0)  # Set drawing speed to fastest
+
+        def draw_shape(shape, color):
+            t.penup()
+            t.goto(shape.x, shape.y)
+            t.pendown()
+            t.color(color)
+
+            for _ in range(4):
+                t.forward(shape.width if isinstance(
+                          shape, Rectangle) else shape.size)
+                t.left(90)
+
+        for rect in list_rectangles:
+            draw_shape(rect, "black")
+
+        for square in list_squares:
+            draw_shape(square, "red")
+
+        turtle.done()
