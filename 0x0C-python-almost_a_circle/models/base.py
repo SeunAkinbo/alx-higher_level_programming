@@ -102,7 +102,7 @@ class Base:
         try:
             with open(filename, "r", newline='', encoding='utf-8') as file:
                 reader = csv.reader(file)
-                return cls.format_csv_load(reader) 
+                return cls.format_csv_load(reader)
         except FileNotFoundError:
             return []
 

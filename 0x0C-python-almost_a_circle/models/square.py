@@ -59,6 +59,6 @@ class Square(Rectangle):
 
         for row in obj_list:
             sqr = cls(int(row[1]), int(row[2]),
-                        int(row[3]), int(row[0]))
+                      int(row[3]), int(row[0]))
             sqr_list.append(sqr)
         return sqr_list

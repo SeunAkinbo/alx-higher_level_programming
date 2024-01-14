@@ -149,6 +149,6 @@ class Rectangle(Base):
 
         for row in obj_list:
             rect = cls(int(row[1]), int(row[2]), int(row[3]),
-                                        int(row[4]), int(row[0]))
+                       int(row[4]), int(row[0]))
             rect_list.append(rect)
         return rect_list
