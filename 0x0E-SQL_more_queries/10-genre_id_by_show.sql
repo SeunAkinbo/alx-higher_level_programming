@@ -1,6 +1,6 @@
 -- Script that lists all shows
-SELECT show.title, genre.genre_id
-FROM tv_shows show
-LEFT JOIN tv_show_genres genere
-ON show.id = genre.show_id
-ORDER BY show.title ASC, genre.genre_id ASC;
+SELECT tv_show.title, tv_show_genre.genre_id
+FROM tv_shows
+LEFT JOIN tv_show_genres
+ON tv_shows.id = tv_show_genres.show_id
+ORDER BY tv_ shows.title ASC, tv_show_genre.genre_id ASC;
