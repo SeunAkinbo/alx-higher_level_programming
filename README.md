@@ -3,7 +3,7 @@
     <img src="https://skillicons.dev/icons?i=c,bash,python" />
   </a>
 </p>
-<h1 align="center">LOW LEVEL PROGRAMMING</h1>
+<h1 align="center">HIGHER LEVEL PROGRAMMING</h1>
 
 <h3 align="left"> This repository contains directories to tasks from ALX.</h3>
 <h3 align="left">alx-higher_level_programming</h3>  
