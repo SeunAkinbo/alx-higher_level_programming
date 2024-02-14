@@ -1,9 +1,7 @@
 -- Script that lists all Comedy shows
-SELECT tv_shows.title
-FROM tv_shows
-INNER JOIN tv_show_genres
-ON tv_shows.id = tv_show_genres.show_id
-INNER JOIN tv_genre
-ON tv_show_genres.genre_id = tv_genres.id
-WHERE tv_genres.name = "Comedy"
-ORDER BY tv_shows.title ASC;
+SELECT ts.title
+FROM tv_shows AS ts
+INNER JOIN tv_show_genres AS tsg ON ts.id = tsg.show_id
+INNER JOIN tv_genre AS tg ON tsg.genre_id = tg.id
+WHERE tg.name = "Comedy"
+ORDER BY ts.title;
