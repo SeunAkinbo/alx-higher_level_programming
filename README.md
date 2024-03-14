@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=c,bash,python" />
+    <img src="https://skillicons.dev/icons?i=c,bash,python,js" />
   </a>
 </p>
 <h1 align="center">HIGHER LEVEL PROGRAMMING</h1>
