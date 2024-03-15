@@ -6,7 +6,9 @@ import sys
 
 
 def states(username, password, name):
-    '''The script lists all states from the database hbtn_0e_0_usa'''
+    '''The script lists all states from the database hbtn_0e_0_usa
+        Args - sql username, sql password, database name
+    '''
     db = MySQLdb.connect(
             host="localhost",
             port=3306,
