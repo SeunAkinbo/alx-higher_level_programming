@@ -1,0 +1,4 @@
+greenlet==3.0.3
+mysqlclient==2.2.4
+SQLAlchemy==2.0.28
+typing-extensions==4.10.0

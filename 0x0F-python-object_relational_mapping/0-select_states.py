@@ -26,14 +26,10 @@ def states(username, password, name):
     cur.close()
     db.close()
 
+
 if __name__ == "__main__":
-    '''The main name check'''
-    if len(sys.argv) != 4:
-        print("Usage: ./<file_name> <username> <password> <database>")
-        sys.exit(1)
-
-        username = sys.argv[1]
-        password = sys.argv[2]
-        database = sys,argv[3]
-
-        states(username, password, database)
+    ''' The main name check '''
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    states(username, password, database)
