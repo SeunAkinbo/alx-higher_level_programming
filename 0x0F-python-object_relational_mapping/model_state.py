@@ -11,5 +11,6 @@ class State(Base):
     """class State inherits from Base=declarative_base"""
     __tablename__ = 'states'
 
-    id = Column("id", Integer, primary_key=True, autoincrement=True, nullable=False)
+    id = Column("id", Integer, primary_key=True,
+                autoincrement=True, nullable=False)
     name = Column("name", String(128), nullable=False)
