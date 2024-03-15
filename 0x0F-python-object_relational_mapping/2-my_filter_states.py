@@ -17,8 +17,8 @@ def states(username, password, name, searched):
             db=name)
 
     cur = db.cursor()
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cur.execute(query, (searched,))
+    query = f"SELECT * FROM states WHERE name = '{searched}' ORDER BY id ASC"
+    cur.execute(query)
 
     rows = cur.fetchall()
     for row in rows:
@@ -30,6 +30,10 @@ def states(username, password, name, searched):
 
 if __name__ == "__main__":
     ''' The main name check '''
+    if len(sys.argv) != 5:
+        print("Usage: python script.py <username> <password> <database> <state_name>")
+        sys.exit(1)
+
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
