@@ -27,15 +27,8 @@ def cities(username, password, db_name, state_name):
 
     rows = cur.fetchall()
 
-    i = 0
-    lenght = len(rows) - 1
-
-    while i <= lenght:
-        if i != lenght:
-            print(", ".join(rows[i]), end=", ")
-        else:
-            print(", ".join(rows[i]))
-        i = i + 1
+    city_names = [row[0] for row in rows]
+    print(', '.join(city_names))
 
     cur.close()
     db.close()
@@ -48,7 +41,6 @@ if __name__ == '__main__':
         password = sys.argv[2]
         db_name = sys.argv[3]
         state_name = sys.argv[4]
-
         cities(username, password, db_name, state_name)
     else:
         print("Usage: python <script.py> <username> \
