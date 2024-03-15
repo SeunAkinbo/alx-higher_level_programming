@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Module 0-select_states'''
+'''Module 1-filter_states'''
 
 import MySQLdb
 import sys
@@ -7,7 +7,7 @@ import sys
 
 def states(username, password, name):
     '''The script lists all states from the database hbtn_0e_0_usa
-        Args - sql username, sql password, database name
+        Args - username, password, name
     '''
     db = MySQLdb.connect(
             host="localhost",
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     ''' The main name check '''
     if len(sys.argv) != 4:
         print("Usage: python script.py <username> \
-                <password> <database> <state_name>")
+                <password> <database>")
         sys.exit(1)
 
     username = sys.argv[1]
