@@ -31,7 +31,8 @@ def states(username, password, name, searched):
 if __name__ == "__main__":
     ''' The main name check '''
     if len(sys.argv) != 5:
-        print("Usage: python script.py <username> <password> <database> <state_name>")
+        print("Usage: python script.py <username> <password>\
+                <database> <state_name>")
         sys.exit(1)
 
     username = sys.argv[1]
