@@ -1,17 +1,15 @@
 #!/usr/bin/python3
-'''Module - model.py'''
+"""Module - model_state: creates the database Base class"""
 
-from sqlalchemy import create_engine, Column, String, Integer
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-
 
 Base = declarative_base()
 
 
 class State(Base):
-    '''Class state inherits from Base =  declarative_base'''
-    __table__ = "states"
+    """class State inherits from Base=declarative_base"""
+    __tablename__ = 'states'
 
-    id = Column(Integer, primary_key=True,
-                nullable=False, autoincrement=True)
-    name = Column(String(128), nullable=False)
+    id = Column("id", Integer, primary_key=True, autoincrement=True, nullable=False)
+    name = Column("name", String(128), nullable=False)
