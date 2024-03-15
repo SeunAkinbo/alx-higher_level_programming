@@ -18,7 +18,7 @@ def cities(username, password, db_name, state_name):
             db=db_name)
 
     cur = db.cursor()
-    query = """SELECT cities.id, cities.name, states.name
+    query = """SELECT cities.name
                FROM states
                INNER JOIN cities ON states.id = cities.state_id
                WHERE states.name = %s
@@ -26,8 +26,16 @@ def cities(username, password, db_name, state_name):
     cur.execute(query, (state_name,))
 
     rows = cur.fetchall()
-    for row in rows:
-        print(row)
+
+    i = 0
+    lenght = len(rows) - 1
+
+    while i <= lenght:
+        if i != lenght:
+            print(", ".join(rows[i]), end=", ")
+        else:
+            print(", ".join(rows[i]))
+        i = i + 1
 
     cur.close()
     db.close()
