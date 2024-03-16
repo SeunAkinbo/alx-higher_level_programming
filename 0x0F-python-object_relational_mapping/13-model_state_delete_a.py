@@ -17,7 +17,6 @@ def delete_states(username, password, db_name):
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
                             username, password, db_name), pool_pre_ping=True)
 
-    Base.metadata.bind = engine
     Session = sessionmaker(bind=engine)
     session = Session()
 
@@ -25,8 +24,7 @@ def delete_states(username, password, db_name):
 
     if states_to_del:
         for state in states_to_del:
-            if 'a' in state.name:
-                session.delete(state)
+            session.delete(state)
 
     session.commit()
     session.close
