@@ -9,7 +9,7 @@ import sys
 from model_state import Base, State
 
 
-def states(username, password, db_name):
+def first_state(username, password, db_name):
     """The state function - lists all states in the database
     Args:
         - username
@@ -22,8 +22,12 @@ def states(username, password, db_name):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).all()
-    print("{}: {}".format(states[0].id, states[0].name))
+    state = session.query(State).first()
+
+    if state is None:
+        print("Nothing")
+    else:
+        print("{}: {}".format(state.id, state.name))
 
     session.close()
 
@@ -36,4 +40,4 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    states(username, password, db_name)
+    first_state(username, password, db_name)
