@@ -27,7 +27,7 @@ def delete_states(username, password, db_name):
             session.delete(state)
 
     session.commit()
-    session.close
+    session.close()
 
 
 if __name__ == "__main__":
