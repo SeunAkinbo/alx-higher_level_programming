@@ -12,7 +12,7 @@ class City(Base):
         - Base: declarative_base from model_state
     """
     __tablename__ = 'cities'
-    
+
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     name = Column("name", String(128), nullable=False)
     state_id = Column(Integer, ForeignKey("state.id"), nullable=False)
