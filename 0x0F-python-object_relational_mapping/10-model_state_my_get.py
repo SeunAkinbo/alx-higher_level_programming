@@ -25,13 +25,11 @@ def get_state(username, password, db_name, state_name):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).filter_by(name=state_name)
-
-    if states is None:
-        print("Not found")
+    state = session.query(State).filter_by(name=state_name).first()
+    if state:
+        print(state.id)
     else:
-        for state in states:
-            print(state.id)
+        print("Not found")
 
     session.close()
 
