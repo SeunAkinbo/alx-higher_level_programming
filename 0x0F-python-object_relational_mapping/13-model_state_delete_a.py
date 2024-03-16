@@ -21,7 +21,7 @@ def delete_states(username, password, db_name):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states_to_del = session.query(State).all()
+    states_to_del = session.query(State).filter(State.name.like('%a')).all()
 
     if states_to_del:
         for state in states_to_del:
