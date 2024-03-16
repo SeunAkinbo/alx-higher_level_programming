@@ -31,10 +31,10 @@ def delete_states(username, password, db_name):
 
 
 if __name__ == "__main__":
-    """main checker"""
+    """The main function"""
     if len(sys.argv) != 4:
         print("Usage: python <username> <password> <database>")
-        sys.exit(1)
+        exit()
 
     username = sys.argv[1]
     password = sys.argv[2]
