@@ -1,0 +1,40 @@
+#!/usr/bin/python3
+"""Module - 9-model_state_filter_a"""
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
+import sys
+
+
+def a_states(username, password, db_name):
+    """The function outputs all states containg the letter a
+    Args:
+        -username
+        -password
+        -db_name
+    """
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+                            username, password, db_name), pool_pre_ping=True)
+
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    states = session.query(State).all()
+
+    for state in states:
+        if 'a' in state.name:
+            print("{}: {}".format(state.id, state.name))
+
+    session.close()
+
+
+if __name__ == "__main__":
+    """The main checker"""
+    if len(sys.argv) != 4:
+        print("Usage: python <script> <username> <password> <database>")
+        sys.exit(1)
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+
+    a_states(username, password, db_name)
