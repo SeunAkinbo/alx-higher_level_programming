@@ -20,11 +20,7 @@ def delete_states(username, password, db_name):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states_to_del = session.query(State).filter(State.name.like('%a')).all()
-
-    if states_to_del:
-        for state in states_to_del:
-            session.delete(state)
+    states_to_del = session.query(State).filter(State.name.like('%a')).delete()
 
     session.commit()
     session.close()
@@ -34,7 +30,7 @@ if __name__ == "__main__":
     """The main function"""
     if len(sys.argv) != 4:
         print("Usage: python <username> <password> <database>")
-        exit()
+        sys.exit(1)
 
     username = sys.argv[1]
     password = sys.argv[2]
