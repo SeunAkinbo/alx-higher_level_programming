@@ -16,8 +16,8 @@ def cities(username, password, db_name):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    cities = session.query(State.name, City.id, City.name).join(City,
-                           State.id == City.state_id).order_by(City.id).all()
+    cities = session.query(State.name, City.id, City.name).join(
+             City, State.id == City.state_id).order_by(City.id).all()
 
     if cities:
         for state_name, city_id, city_name in cities:
