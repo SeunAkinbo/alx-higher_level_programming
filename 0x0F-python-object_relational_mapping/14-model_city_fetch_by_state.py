@@ -10,7 +10,7 @@ import sys
 
 def cities(username, password, db_name):
     """The function prints all the cities in the database"""
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
                             username, password, db_name), pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
@@ -21,7 +21,7 @@ def cities(username, password, db_name):
 
     if cities:
         for city in cities:
-            print("{}: ({}) {}".format(city[0], city[1], city[2]))
+            print("{:s}: ({:d}) {:s}".format(city[0], city[1], city[2]))
 
     session.close()
 
