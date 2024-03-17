@@ -30,7 +30,7 @@ if __name__ == '__main__':
     """The main function"""
     if len(sys.argv) != 4:
         print("Usage: python <script> <username> <password> <db_name>")
-        sys.exit(1)
+        exit()
 
     username = sys.argv[1]
     password = sys.argv[2]
