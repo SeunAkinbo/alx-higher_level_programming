@@ -16,12 +16,12 @@ def cities(username, password, db_name):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    cities = session.query(State.name, City.id, City.name).filter(
-                           State.id == City.state_id).order_by(City.id)
+    cities = session.query(State.name, City.id, City.name).join(City,
+                           State.id == City.state_id).order_by(City.id).all()
 
     if cities:
-        for city in cities:
-            print("{:s}: ({:d}) {:s}".format(city[0], city[1], city[2]))
+        for state_name, city_id, city_name in cities:
+            print("{}: ({}) {}".format(state_name, city_id, city_name))
 
     session.close()
 
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     """The main function"""
     if len(sys.argv) != 4:
         print("Usage: python <script> <username> <password> <db_name>")
-        exit()
+        sys.exit(1)
 
     username = sys.argv[1]
     password = sys.argv[2]
