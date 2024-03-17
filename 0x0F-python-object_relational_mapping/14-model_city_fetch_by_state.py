@@ -13,6 +13,7 @@ def cities(username, password, db_name):
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
                             username, password, db_name), pool_pre_ping=True)
 
+    Base.metadata.bind = engine
     Session = sessionmaker(bind=engine)
     session = Session()
 
