@@ -21,7 +21,7 @@ def states_and_cities(username, password, db_name):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    locations = session.query(State).join(City).order_by(State.id).all()
+    locations = session.query(State).order_by(State.id).all()
 
     for location in locations:
         print("{}: {}".format(location.id, location.name))
