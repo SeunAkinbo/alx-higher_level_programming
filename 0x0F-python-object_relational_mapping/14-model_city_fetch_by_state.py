@@ -13,15 +13,15 @@ def cities(username, password, db_name):
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
                             username, password, db_name), pool_pre_ping=True)
 
-    Base.metadata.bind = engine
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    cities = session.query(City).order_by(City.id).all()
+    cities = session.query(State.name, City.id, City.name).filter(
+                           State.id == City.state_id).order_by(City.id)
 
     if cities:
         for city in cities:
-            print("{}: {}".format(city.id, city.name))
+            print("{}: ({}) {}".format(city[0], city[1], city[2]))
 
     session.close()
 
@@ -31,9 +31,9 @@ if __name__ == '__main__':
     if len(sys.argv) != 4:
         print("Usage: python <script> <username> <password> <db_name>")
         sys.exit(1)
-    
+
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
-    
+
     cities(username, password, db_name)
