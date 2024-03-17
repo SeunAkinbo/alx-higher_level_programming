@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Module: 7-model_state_fetch_all - contains a function that
-   lists all states objects in the database hbtn_0e_6_usa
+"""Module: 8-model_state_fetch_first - contains a function that
+   lists the first state object in the database hbtn_0e_6_usa
 """
 
 from sqlalchemy import create_engine
@@ -10,7 +10,7 @@ from model_state import Base, State
 
 
 def first_state(username, password, db_name):
-    """The state function - lists all states in the database
+    """The state function - outputs the first state in the database
     Args:
         - username
         - password
