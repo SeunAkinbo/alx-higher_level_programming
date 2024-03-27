@@ -1,3 +1,4 @@
 #!/bin/bash
 # The script takes the URL and displays all the HTTP methods the server will accept
-curl -s -X OPTIONS -I "$1" | grep -i '^Allow:' | awk '{print $2}'
+#!/bin/bash
+curl -s -i -X OPTIONS "$1" | grep "Allow" | cut -d ":" -f 2- | tr -d '[:space:]'
