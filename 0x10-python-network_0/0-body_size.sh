@@ -6,4 +6,4 @@
 URL=$1
 
 # Use curl to fetch the response
-curl -Is $URL | grep -i Content-Length | awk '{print $2}' | tr -d '\r'
+curl -s $URL | wc -c
