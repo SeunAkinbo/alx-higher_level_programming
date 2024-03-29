@@ -6,7 +6,10 @@ import sys
 
 
 def jsonAPI(url):
-    """"""
+    """The function that takes in a letter and sends a POST request
+    to http://0.0.0.0:5000/search_user with the letter
+    as a parameter
+    """
     if len(sys.argv) > 1:
         letter = sys.argv[1]
     else:
@@ -18,14 +21,14 @@ def jsonAPI(url):
     try:
         obj = response.json()
         if obj:
-            return "[{}] {}".format(data['id'], data['name'])
+            print("[{}] {}".format(data['id'], data['name']))
         else:
-            return "No result"
+            print("No result")
     except ValueError:
-        return "Not a valid JSON"
+        print("Not a valid JSON")
 
 
 if __name__ == "__main__":
     url = "http://0.0.0.0:5000/search_user"
     res = jsonAPI(url)
-    print(res)
+    res
