@@ -6,6 +6,7 @@ import sys
 
 
 def getCommits():
+    """Lists 10 most recent commits in a GitHub repository"""
     repo = sys.argv[1]
     owner = sys.argv[2]
 
