@@ -11,8 +11,8 @@ def postEmail():
     """The function fetches the url response header and displays value"""
     url = sys.argv[1]
     email = sys.argv[2]
-    data = urlencode({"email": email}).encode('ascii')
-    req = Request(url, data=data, method='POST')
+    data = urlencode({"email": email}).encode('utf-8')
+    req = Request(url, data=data)
 
     try:
         with urlopen(req) as response:
