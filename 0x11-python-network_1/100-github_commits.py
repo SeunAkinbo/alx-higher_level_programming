@@ -12,14 +12,13 @@ def getCommits():
     url = "https://api.github.com/repos/{}/{}/commits".format(owner, repo)
     response = requests.get(url)
 
-    if response.status_code == 200:
-        objs = response.json()
-        x = 0
-        while x < 10:
-            encrypt_id = objs[x].get("sha")
-            author = objs[x].get("commit").get("author").get("name")
-            print("{}: {}".format(encrypt_id, author))
-            x += 1
+    objs = response.json()
+    x = 0
+    while x < 10:
+        encrypt_id = objs[x].get("sha")
+        author = objs[x].get("commit").get("author").get("name")
+        print("{}: {}".format(encrypt_id, author))
+        x += 1
 
 
 if __name__ == "__main__":

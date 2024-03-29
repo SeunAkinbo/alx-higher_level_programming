@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module: 6-post_email"""
+"""Module: 7-error_code"""
 
 import requests
 import sys
