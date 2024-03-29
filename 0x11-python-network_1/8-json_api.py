@@ -22,7 +22,7 @@ def jsonAPI(url):
     if res_type == "application/json":
         obj = response.json()
         if obj:
-            return "[{}] {}".format(data['id'], data['name'])
+            return "[{}] {}".format(obj['id'], obj['name'])
         else:
             return "No result"
     else:
