@@ -17,18 +17,19 @@ def jsonAPI(url):
 
     data = {"q": letter}
     response = requests.post(url, data=data)
+    res_type = response.headers["content-type"]
 
-    try:
+    if res_type == "application/json":
         obj = response.json()
         if obj:
-            print("[{}] {}".format(data['id'], data['name']))
+            return "[{}] {}".format(data['id'], data['name'])
         else:
-            print("No result")
-    except ValueError:
-        print("Not a valid JSON")
+            return "No result"
+    else:
+        return "Not a valid JSON"
 
 
 if __name__ == "__main__":
     url = "http://0.0.0.0:5000/search_user"
     res = jsonAPI(url)
-    res
+    print(res)
