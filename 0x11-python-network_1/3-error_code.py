@@ -2,7 +2,7 @@
 """Module: 3-error_code"""
 
 from urllib.request import Request, urlopen
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 import sys
 
 
@@ -12,16 +12,13 @@ def respErr():
     req = Request(url)
 
     try:
-        with urlopen(req) as response:
+        with urlopen(url) as response:
             res = response.read().decode("utf-8")
             return res
+    except HTTPError as e:
+        print("Error code: {}".format(e.code))
     except URLError as e:
-        if hasattr(e, "reason"):
-            print("Failed to reach server.")
-            print("Reason: ", e.reason)
-        elif hasattr(e, "code"):
-            print("Request execution failed.")
-            print("Error code: ", e.code)
+        print("Reason: {}".format(e.reason))
 
 
 if __name__ == "__main__":
