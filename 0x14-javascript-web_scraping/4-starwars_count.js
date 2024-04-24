@@ -1,29 +1,23 @@
 #!/usr/bin/node
-// Gets Starwars Character ID
 
 const request = require('request');
+const url = process.argv[2];
 
-function countMoviesWithCharacter (apiUrl, characterId) {
-  request.get(apiUrl, (err, response, body) => {
-    if (err) {
-      console.log(err);
-      return;
-    } else if (response.statusCode !== 200) {
-      console.log(`Error: ${response.statusCode}`);
-      return;
+request(url, (error, response, body) => {
+  if (error) {
+    console.error(error);
+  } else if (response.statusCode === 200) {
+    const films = JSON.parse(body).results;
+    let count = 0;
+    for (const film of films) {
+      for (const characterUrl of film.characters) {
+        if (characterUrl.includes('18')) {
+          count++;
+        }
+      }
     }
-    const movieData = JSON.parse(body);
-    const moviesWithCharacter = movieData.results.filter(movie =>
-      movie.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
-    );
-    console.log(`${moviesWithCharacter.length}`);
-  });
-}
-
-if (process.argv.length !== 3) {
-  console.log('Usage: node script.js <api_url>');
-  process.exit(1);
-}
-
-const apiUrl = process.argv[2];
-countMoviesWithCharacter(apiUrl, 18);
+    console.log(count);
+  } else {
+    console.error(`An error occurred. Status code: ${response.statusCode}`);
+  }
+});
