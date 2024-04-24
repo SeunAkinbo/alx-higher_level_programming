@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// Writing content to file
+// Getting HTTP response status code
 
 const request = require('request');
 
